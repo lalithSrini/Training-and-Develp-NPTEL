@@ -36,11 +36,11 @@ const rawQuestions = [
     answer: "1, 2 and 3 are correct, 4 is false."
   },
   {
-    question: "Which one of the following is incorrect in connection to sec. 2(f) of the Indian Employee’s Provident Fund act?",
+    question: "Which one of the following is incorrect in connection to sec. 2(f) of the Indian Employee's Provident Fund act?",
     options: [
-      "“employee” means any person who is employed for wages in any kind of work, manual or otherwise, in or in connection with the work of [an establishment], and who gets his wages directly or indirectly from the employer.",
-      "“employee” term covers any person employed by or through a contractor in or in connection with the work of the establishment;",
-      "The “employee” term covers any person engaged as an apprentice, not being an apprentice engaged under the Apprentices Act, 1961 (52 of 1961), or under the standing orders of the establishment;",
+      "\"employee\" means any person who is employed for wages in any kind of work, manual or otherwise, in or in connection with the work of [an establishment], and who gets his wages directly or indirectly from the employer.",
+      "\"employee\" term covers any person employed by or through a contractor in or in connection with the work of the establishment;",
+      "The \"employee\" term covers any person engaged as an apprentice, not being an apprentice engaged under the Apprentices Act, 1961 (52 of 1961), or under the standing orders of the establishment;",
       "None of these"
     ],
     answer: "None of these"
@@ -726,7 +726,7 @@ const rawQuestions = [
     answer: "Kirkpatrick Model"
   },
   {
-    question: "What is measured at the first level (Reaction) of Kirkpatrick’s Model?",
+    question: "What is measured at the first level (Reaction) of Kirkpatrick's Model?",
     options: [
       "Knowledge gain",
       "Change in employee behavior",
@@ -948,7 +948,7 @@ const rawQuestions = [
   {
     question: "In 360-degree feedback, who provides evaluation input?",
     options: [
-      "Only the employee’s manager",
+      "Only the employee's manager",
       "Only the HR department",
       "Peers, subordinates, supervisors, and self",
       "External auditors"
@@ -988,12 +988,12 @@ const rawQuestions = [
   {
     question: "Which of these is NOT typically evaluated during a performance appraisal?",
     options: [
-      "Employee’s job-related competencies",
-      "Employee’s physical appearance",
-      "Employee’s achievement of goals",
-      "Employee’s work behavior"
+      "Employee's job-related competencies",
+      "Employee's physical appearance",
+      "Employee's achievement of goals",
+      "Employee's work behavior"
     ],
-    answer: "Employee’s physical appearance"
+    answer: "Employee's physical appearance"
   },
   {
     question: "Which of the following is a key benefit of using performance appraisals?",
@@ -1066,7 +1066,7 @@ const rawQuestions = [
     answer: "Lewin's Change Management Model"
   },
   {
-    question: "In Lewin’s model, the 'unfreezing' stage involves:",
+    question: "In Lewin's model, the 'unfreezing' stage involves:",
     options: [
       "Implementing the change",
       "Returning to old processes",
@@ -1117,7 +1117,7 @@ const rawQuestions = [
     answer: "An organization that continually enhances its capabilities to create and innovate"
   },
   {
-    question: "Which of the following is NOT one of Peter Senge’s five disciplines for a learning organization?",
+    question: "Which of the following is NOT one of Peter Senge's five disciplines for a learning organization?",
     options: [
       "Personal mastery",
       "Shared vision",
@@ -1470,7 +1470,13 @@ function App() {
           
           {startTime && endTime && (
             <p className="time-taken">
-              Time Taken: {Math.round((endTime - startTime) / 1000)} seconds
+              Time Taken: {(() => {
+                const totalSeconds = Math.round((endTime - startTime) / 1000); 
+                const hours = Math.floor(totalSeconds / 3600);
+                const minutes = Math.floor((totalSeconds % 3600) / 60);
+                const seconds = totalSeconds % 60;
+                return `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+              })()}
             </p>
           )}
           
