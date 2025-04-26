@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/static/css/main.5809c099.css",
-    "main.js": "/static/js/main.15db7b8f.js",
-    "static/js/453.2236d9b7.chunk.js": "/static/js/453.2236d9b7.chunk.js",
-    "index.html": "/index.html",
-    "main.5809c099.css.map": "/static/css/main.5809c099.css.map",
-    "main.15db7b8f.js.map": "/static/js/main.15db7b8f.js.map",
-    "453.2236d9b7.chunk.js.map": "/static/js/453.2236d9b7.chunk.js.map"
+    "main.css": "/Training-and-Develp-NPTEL/static/css/main.5809c099.css",
+    "main.js": "/Training-and-Develp-NPTEL/static/js/main.db87a260.js",
+    "static/js/453.2236d9b7.chunk.js": "/Training-and-Develp-NPTEL/static/js/453.2236d9b7.chunk.js",
+    "index.html": "/Training-and-Develp-NPTEL/index.html",
+    "main.5809c099.css.map": "/Training-and-Develp-NPTEL/static/css/main.5809c099.css.map",
+    "main.db87a260.js.map": "/Training-and-Develp-NPTEL/static/js/main.db87a260.js.map",
+    "453.2236d9b7.chunk.js.map": "/Training-and-Develp-NPTEL/static/js/453.2236d9b7.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.5809c099.css",
-    "static/js/main.15db7b8f.js"
+    "static/js/main.db87a260.js"
   ]
 }
