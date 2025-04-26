@@ -176,7 +176,7 @@ footer {
 
 .question-counter {
   font-size: 0.9rem;
-  color: #777;
+  color: #e1e1e1;
   text-align: right;
 }
 
@@ -232,8 +232,8 @@ footer {
 }
 
 .option-button.selected {
-  background-color: #114b5f;
-  color: white;
+  background-color: #92f7fe;
+  color: rgb(0, 0, 0);
   border-color: #114b5f;
 }
 
