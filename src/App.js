@@ -5,1212 +5,1221 @@ import React, { useState, useEffect } from "react";
 import "./App.css";
 
 const rawQuestions = [
-  {
-    question: "How did Louis Allen define organization?",
-    options: [
-      "Organization is the process of identifying and grouping work to be performed, defining and delegating responsibility and authority and establishing relationships to enable people to work most effectively together in accomplishing objectives.",
-      "Organization is the process of combining the work that individuals or groups have to perform with the facilities necessary for its execution, that the duties so performed provide the best channels for efficient, systematic, positive and coordinated application of the available effort.",
-      "An organization is a collective group of people working without having a common purpose.",
-      "None of these"
-    ],
-    answer: "Organization is the process of identifying and grouping work to be performed, defining and delegating responsibility and authority and establishing relationships to enable people to work most effectively together in accomplishing objectives."
-  },
-  {
-    question: "There is a wide scope of employer-employee relationships, but which one is NOT an issue involved with that scope?",
-    options: [
-      "Collective bargaining",
-      "Customer service",
-      "Standing orders",
-      "Grievances and their redressal"
-    ],
-    answer: "Customer service"
-  },
-  {
-    question: "Consider the following statements and select the correctanswer\n1. Training refers to teaching an employee new skills to help them improve their job performance and work more efficiently.\n2. Training helps to enhance specific abilities or acquire new ones relevant to a job, task, or activity.\n3. A proper training program is both Trainee and Trainer dependent\n4. A proper training program is only trainee-dependent and does not depend on the Trainer.",
-    options: [
-      "1 and 4 are correct, 2 and 3 are false.",
-      "All 1, 2, 3, and 4 are correct.",
-      "1, 2 and 3 are correct, 4 is false.",
-      "None of these is correct"
-    ],
-    answer: "1, 2 and 3 are correct, 4 is false."
-  },
-  {
-    question: "Which one of the following is incorrect in connection to sec. 2(f) of the Indian Employee's Provident Fund act?",
-    options: [
-      "\"employee\" means any person who is employed for wages in any kind of work, manual or otherwise, in or in connection with the work of [an establishment], and who gets his wages directly or indirectly from the employer.",
-      "\"employee\" term covers any person employed by or through a contractor in or in connection with the work of the establishment;",
-      "The \"employee\" term covers any person engaged as an apprentice, not being an apprentice engaged under the Apprentices Act, 1961 (52 of 1961), or under the standing orders of the establishment;",
-      "None of these"
-    ],
-    answer: "None of these"
-  },
-  {
-    question: "Which type of training refers to familiarizing employees with the means of preventing, detecting, and eliminating non-quality items?",
-    options: [
-      "Technical training",
-      "Soft skills training",
-      "Quality training",
-      "Skill training"
-    ],
-    answer: "Quality training"
-  },
-  {
-    question: "Find out the odd one of the following in terms of types of employment contract.",
-    options: [
-      "Ad-hoc employment contract",
-      "Permanent employment contract",
-      "Temporary employment contract",
-      "Independent contractor/consultant"
-    ],
-    answer: "Ad-hoc employment contract"
-  },
-  {
-    question: "Which of the following best defines 'Human Capital'?",
-    options: [
-      "The financial resources owned by an organization.",
-      "The physical assets, such as buildings and machinery, used by an organization.",
-      "The skills, knowledge, abilities, and health of employees that contribute to organizational success.",
-      "The legal framework that governs organizational operations."
-    ],
-    answer: "The skills, knowledge, abilities, and health of employees that contribute to organizational success."
-  },
-  {
-    question: "Which of the following is a primary goal of knowledge management in an organization?",
-    options: [
-      "To store large volumes of data in databases",
-      "To encourage employee retention",
-      "To create, share, and utilize knowledge effectively to achieve organizational goals",
-      "To replace traditional organizational structures"
-    ],
-    answer: "To create, share, and utilize knowledge effectively to achieve organizational goals"
-  },
-  {
-    question: "Which of the following best defines Intellectual Capital?",
-    options: [
-      "Financial assets held by a company",
-      "Tangible resources such as buildings and equipment",
-      "Knowledge, skills, and intellectual property contributing to a company's value",
-      "Current market value of a company's shares"
-    ],
-    answer: "Knowledge, skills, and intellectual property contributing to a company's value"
-  },
-  {
-    question: "Which of the following best describes 'Knowledge Capital' as a type of human capital?",
-    options: [
-      "The skills and abilities of employees to form relationships.",
-      "The expertise, education, and training individuals possess.",
-      "The emotional resilience and well-being of individuals.",
-      "The loyalty and trust of customers."
-    ],
-    answer: "The expertise, education, and training individuals possess.",
-  },
-  {
-    question: "Which of the following is/are correct statements about 'strategy'?",
-    options: [
-      "Only 1 and 2",
-      "Only 4",
-      "Only 1 and 3",
-      "Only 2"
-    ],
-    answer: "Only 4"
-  },
-  {
-    question: "Identify the correct order of the steps of strategy implementation:",
-    options: [
-      "2-1-3-5-4-6",
-      "1-4-2-3-5-6",
-      "3-2-4-1-5-6",
-      "1-2-3-4-5-6"
-    ],
-    answer: "1-2-3-4-5-6"
-  },
-  {
-    question: "The success of a competitive strategy is contingent on the demands of the __________ and factors internal to the organization?",
-    options: [
-      "company mission",
-      "company goals",
-      "strategic choice",
-      "external environment"
-    ],
-    answer: "external environment"
-  },
-  {
-    question: "There are four business strategies and which of the following is NOT one of them?",
-    options: [
-      "Disinvestment",
-      "Internal growth",
-      "External growth",
-      "All the three as mentioned above are business strategies"
-    ],
-    answer: "All the three as mentioned above are business strategies"
-  },
-  {
-    question: "Metrics that show value of training involves _______, performance improvement, reduced customer complaints, reduced turnover and greater employee satisfaction.",
-    options: [
-      "turnover",
-      "satisfaction",
-      "learning",
-      "training"
-    ],
-    answer: "learning"
-  },
-  {
-    question: "A perception that training is 'forced' may lead to more time spent discussing than implementing training. Which model of organizing strategic training has the above constraints?",
-    options: [
-      "Corporate University Model",
-      "Customer Model",
-      "Matrix Model",
-      "None of these"
-    ],
-    answer: "Matrix Model"
-  },
-  {
-    question: "It's more suitable for large companies with ample resources to invest in long-term training. There may be conflicts related to the curriculum of content areas. Which model has these drawbacks?",
-    options: [
-      "Corporate University Model",
-      "Customer Model",
-      "Matrix Model",
-      "None of these"
-    ],
-    answer: "Corporate University Model"
-  },
-  {
-    question: "Which model involves having a training function for each division or function of the organization?",
-    options: [
-      "Corporate university model",
-      "Matrix model",
-      "Faculty model",
-      "Customer model"
-    ],
-    answer: "Customer model"
-  },
-  {
-    question: "The organizational managers and employees may be anxious about change, feel unable to cope up, value the current and do not understand the value of the new one. Which change-related problem is described?",
-    options: [
-      "Resistance to change",
-      "Loss of control",
-      "Power imbalance",
-      "Task redefinition"
-    ],
-    answer: "Resistance to change"
-  },
-  {
-    question: "A __________ strategy is a business approach where an organization focuses its efforts on a single product line, market, or set of resources to achieve a competitive advantage.",
-    options: [
-      "Internal growth strategy",
-      "External growth strategy",
-      "Disinvestment strategy",
-      "concentration strategy"
-    ],
-    answer: "concentration strategy"
-  },
-  {
-    question: "How can training needs be identified?",
-    options: [
-      "Current Capability + Desired Capability",
-      "Desired Capability - Current Capability",
-      "Current Performance + Future Needs",
-      "Training Budget - Performance Gap"
-    ],
-    answer: "Desired Capability - Current Capability"
-  },
-  {
-    question: "Which of the following factors is directly related to an employee's motivation to learn and performance?",
-    options: [
-      "Department size",
-      "Training budget allocation",
-      "Age and generation",
-      "Organizational hierarchy"
-    ],
-    answer: "Age and generation"
-  },
-  {
-    question: "Which step in the TNA process involves analyzing the collected data to draw conclusions and make recommendations for training?",
-    options: [
-      "5th step",
-      "4th step",
-      "3rd step",
-      "2nd step"
-    ],
-    answer: "4th step"
-  },
-  {
-    question: "What distinguishes the proactive approach from the reactive approach in TNA?",
-    options: [
-      "Proactive TNA addresses current performance gaps.",
-      "Reactive TNA considers only non-training solutions.",
-      "Proactive TNA focuses on anticipated future performance issues.",
-      "Reactive TNA is completed after implementing new technology."
-    ],
-    answer: "Proactive TNA focuses on anticipated future performance issues."
-  },
-  {
-    question: "Why are focus group discussions useful in training needs assessment?",
-    options: [
-      "They are quick to organize.",
-      "They explore complex issues and reduce training rejection by stakeholders.",
-      "They minimize bias in employee responses",
-      "They are ideal for analyzing quantitative data."
-    ],
-    answer: "They explore complex issues and reduce training rejection by stakeholders."
-  },
-  {
-    question: "What is the primary goal of competency assessments in the workplace?",
-    options: [
-      "To determine salary adjustments",
-      "To measure employee attendance",
-      "To evaluate employee job satisfaction",
-      "To identify and correct performance issues before they affect"
-    ],
-    answer: "To identify and correct performance issues before they affect"
-  },
-  {
-    question: "What is one disadvantage of using questionnaires for TNA?",
-    options: [
-      "They require too much time to complete",
-      "They do not allow for feedback from employees",
-      "The results may lack confidentiality",
-      "There is a high drop-out rate and potential for misinterpretation"
-    ],
-    answer: "There is a high drop-out rate and potential for misinterpretation"
-  },
-  {
-    question: "What is defined as 'the application of knowledge, skills and behaviours used in performing specific job tasks'?",
-    options: [
-      "Appraisal",
-      "Efficiency",
-      "Competency",
-      "None of the above"
-    ],
-    answer: "Competency"
-  },
-  {
-    question: "Which of the following is NOT a key level of Training Needs Assessment (TNA)?",
-    options: [
-      "Occupational Assessment",
-      "Individual assessment",
-      "Educational assessment",
-      "Organizational assessment"
-    ],
-    answer: "Educational assessment"
-  },
-  {
-    question: "According to the TNA model, what happens if the performance deficiency (PD) is due to something other than a KSA (Knowledge, Skills, Abilities) deficiency?",
-    options: [
-      "Training is the only solution to the problem",
-      "Non-training solutions should be considered",
-      "Performance issues are ignored",
-      "Only individual training is necessary"
-    ],
-    answer: "Non-training solutions should be considered"
-  },
-  {
-    question: "What is the first step in the training process model?",
-    options: [
-      "Designing the training program",
-      "Conducting the needs assessment",
-      "Evaluating the training",
-      "Implementing the training"
-    ],
-    answer: "Conducting the needs assessment"
-  },
-  {
-    question: "Which of the following is NOT a component of the training design process?",
-    options: [
-      "Developing learning objectives",
-      "Creating employee payroll systems",
-      "Selecting training methods",
-      "Developing course content"
-    ],
-    answer: "Creating employee payroll systems"
-  },
-  {
-    question: "Which term refers to the ability to apply learning from training to the job context?",
-    options: [
-      "Learning reinforcement",
-      "Training efficiency",
-      "Transfer of training",
-      "Training retention"
-    ],
-    answer: "Transfer of training"
-  },
-  {
-    question: "According to adult learning theory, adults are:",
-    options: [
-      "Not motivated to learn",
-      "Dependent learners",
-      "Internally motivated and self-directed",
-      "Unable to retain new information"
-    ],
-    answer: "Internally motivated and self-directed"
-  },
-  {
-    question: "Which principle is NOT part of adult learning theory?",
-    options: [
-      "Adults are result-oriented",
-      "Adults need to be told what to do",
-      "Adults bring experience to learning",
-      "Adults need to be involved in the planning and evaluation of their instruction"
-    ],
-    answer: "Adults need to be told what to do"
-  },
-  {
-    question: "What is one way to increase transfer of training?",
-    options: [
-      "Avoid feedback to learners",
-      "Provide a realistic training environment",
-      "Isolate training from real-world applications",
-      "Discourage collaboration"
-    ],
-    answer: "Provide a realistic training environment"
-  },
-  {
-    question: "In instructional design, what is a 'learning objective'?",
-    options: [
-      "The reason for choosing the training venue",
-      "A broad organizational strategy",
-      "A measurable outcome of training",
-      "An employee's job description"
-    ],
-    answer: "A measurable outcome of training"
-  },
-  {
-    question: "Which of the following best describes the 'training methods'?",
-    options: [
-      "HR department policies",
-      "The tools and techniques used to deliver training content",
-      "A type of budgeting tool",
-      "None of the above"
-    ],
-    answer: "The tools and techniques used to deliver training content"
-  },
-  {
-    question: "Why is feedback important in training?",
-    options: [
-      "To criticize learners",
-      "To control the pace of the session",
-      "To reinforce learning and improve performance",
-      "To extend training time"
-    ],
-    answer: "To reinforce learning and improve performance"
-  },
-  {
-    question: "Which of the following is a technique used in experiential learning?",
-    options: [
-      "Case studies",
-      "Lectures",
-      "Audio podcasts",
-      "Performance appraisals"
-    ],
-    answer: "Case studies"
-  },
-  {
-    question: "Which of the following best describes 'On-the-job training' (OJT)?",
-    options: [
-      "Training conducted in a classroom setting.",
-      "Training by reading manuals and handouts.",
-      "Training while performing job tasks under supervision.",
-      "Training using virtual simulations only."
-    ],
-    answer: "Training while performing job tasks under supervision."
-  },
-  {
-    question: "Which method is considered a traditional training method?",
-    options: [
-      "Online learning",
-      "Job rotation",
-      "Virtual reality simulation",
-      "Self-paced e-learning"
-    ],
-    answer: "Job rotation"
-  },
-  {
-    question: "A major disadvantage of apprenticeship training is:",
-    options: [
-      "It is too quick and ineffective.",
-      "It provides no real job experience.",
-      "It is time-consuming and costly.",
-      "It does not teach technical skills."
-    ],
-    answer: "It is time-consuming and costly."
-  },
-  {
-    question: "In vestibule training, training is conducted:",
-    options: [
-      "Directly at the worksite.",
-      "In a classroom using only theoretical lectures.",
-      "In a simulated environment similar to the actual job.",
-      "Through home-based assignments."
-    ],
-    answer: "In a simulated environment similar to the actual job."
-  },
-  {
-    question: "Which one is NOT a feature of job instruction training (JIT)?",
-    options: [
-      "Demonstration of job tasks.",
-      "Detailed feedback for improvement.",
-      "Random assignment without supervision.",
-      "Step-by-step instruction."
-    ],
-    answer: "Random assignment without supervision."
-  },
-  {
-    question: "Which of the following is NOT an advantage of traditional training methods?",
-    options: [
-      "Social interaction with peers and trainers.",
-      "Immediate feedback.",
-      "Scalability for large remote audiences.",
-      "Practical skill development."
-    ],
-    answer: "Scalability for large remote audiences."
-  },
-  {
-    question: "Which training method uses experienced employees to guide newcomers?",
-    options: [
-      "Lecture-based training",
-      "Mentoring",
-      "Vestibule training",
-      "Simulation training"
-    ],
-    answer: "Mentoring"
-  },
-  {
-    question: "Which type of analysis identifies specific skills gaps in employees?",
-    options: [
-      "Organizational analysis",
-      "Task analysis",
-      "Strategic analysis",
-      "Economic analysis"
-    ],
-    answer: "Task analysis"
-  },
-  {
-    question: "Which of the following is an example of a 'simulation' training method?",
-    options: [
-      "Role-playing negotiation scenarios.",
-      "Listening to a motivational lecture.",
-      "Reading about customer service techniques.",
-      "Filling out online surveys."
-    ],
-    answer: "Role-playing negotiation scenarios."
-  },
-  {
-    question: "Which of the following is NOT an example of an experiential training method?",
-    options: [
-      "Role Plays",
-      "Simulations",
-      "Lectures",
-      "Case studies"
-    ],
-    answer: "Lectures"
-  },
-  {
-    question: "Which of the following is the most important feature of e-learning?",
-    options: [
-      "Geographical flexibility",
-      "In-person supervision",
-      "Handwritten material delivery",
-      "One-on-one classroom discussions"
-    ],
-    answer: "Geographical flexibility"
-  },
-  {
-    question: "Which term best describes training delivered through mobile devices?",
-    options: [
-      "Vestibule training",
-      "M-learning",
-      "Job rotation",
-      "On-the-job training"
-    ],
-    answer: "M-learning"
-  },
-  {
-    question: "Which technology uses 'immersive 3D environments' for training employees?",
-    options: [
-      "E-learning platforms",
-      "Virtual reality (VR)",
-      "Video conferencing",
-      "Email-based training"
-    ],
-    answer: "Virtual reality (VR)"
-  },
-  {
-    question: "Which of the following is an advantage of technology-based training?",
-    options: [
-      "Limited accessibility",
-      "Higher cost than traditional training",
-      "Self-paced learning",
-      "Requires full-time trainers always present"
-    ],
-    answer: "Self-paced learning"
-  },
-  {
-    question: "A major disadvantage of e-learning is:",
-    options: [
-      "It provides no flexibility for learners",
-      "It may result in limited hands-on practice",
-      "It increases travel expenses",
-      "It discourages independent learning"
-    ],
-    answer: "It may result in limited hands-on practice"
-  },
-  {
-    question: "Which of the following training methods uses real-time instructor-led online training?",
-    options: [
-      "Webinars",
-      "Job shadowing",
-      "Apprenticeship",
-      "Self-paced online course"
-    ],
-    answer: "Webinars"
-  },
-  {
-    question: "Which type of learning platform is an online-based environment offering self-paced course modules?",
-    options: [
-      "Mobile app learning",
-      "Learning Management System (LMS)",
-      "Virtual coaching",
-      "Job instruction training"
-    ],
-    answer: "Learning Management System (LMS)"
-  },
-  {
-    question: "Which of these is an example of 'blended learning'?",
-    options: [
-      "Only classroom training",
-      "Only e-learning modules",
-      "A combination of classroom and online learning",
-      "Self-taught training with no guidance"
-    ],
-    answer: "A combination of classroom and online learning"
-  },
-  {
-    question: "Which of the following is NOT a benefit of mobile learning (m-learning)?",
-    options: [
-      "Learning on-the-go",
-      "Easy content accessibility",
-      "Device compatibility issues",
-      "Flexibility in learning time"
-    ],
-    answer: "Device compatibility issues"
-  },
-  {
-    question: "Which one is an important consideration for designing e-learning content?",
-    options: [
-      "Focus only on text-heavy materials",
-      "Ignore learner interaction",
-      "Interactive and multimedia-rich content",
-      "Minimize assessments"
-    ],
-    answer: "Interactive and multimedia-rich content"
-  },
-  {
-    question: "Which of the following best defines 'behavior modeling' in training?",
-    options: [
-      "Employees learn by creating their own training modules.",
-      "Employees learn by observing and practicing behaviors demonstrated by a model.",
-      "Employees memorize the company policy manuals.",
-      "Employees focus only on theoretical concepts without practice."
-    ],
-    answer: "Employees learn by observing and practicing behaviors demonstrated by a model."
-  },
-  {
-    question: "In experiential learning, which of the following comes FIRST in the process?",
-    options: [
-      "Concrete experience",
-      "Abstract conceptualization",
-      "Reflective observation",
-      "Active experimentation"
-    ],
-    answer: "Concrete experience"
-  },
-  {
-    question: "Which of the following is an example of an 'adventure learning' activity?",
-    options: [
-      "Role-playing a customer complaint",
-      "Attending a web seminar",
-      "Completing a ropes course challenge",
-      "Reading case studies"
-    ],
-    answer: "Completing a ropes course challenge"
-  },
-  {
-    question: "Which term describes group members being assigned different roles and acting out scenarios?",
-    options: [
-      "Role playing",
-      "Simulation",
-      "Case study",
-      "Adventure learning"
-    ],
-    answer: "Role playing"
-  },
-  {
-    question: "Which of the following is a major goal of team training?",
-    options: [
-      "To teach individual leadership skills only",
-      "To enhance communication and collaboration among team members",
-      "To focus only on technical knowledge",
-      "To replace the team leader"
-    ],
-    answer: "To enhance communication and collaboration among team members"
-  },
-  {
-    question: "Which technique emphasizes solving realistic problems using analytical tools and decision-making skills?",
-    options: [
-      "Simulation",
-      "Case study method",
-      "Role playing",
-      "E-learning"
-    ],
-    answer: "Case study method"
-  },
-  {
-    question: "Which of the following is NOT typically part of team training?",
-    options: [
-      "Cross-training",
-      "Coordination training",
-      "Simulation training",
-      "Individual sports coaching"
-    ],
-    answer: "Individual sports coaching"
-  },
-  {
-    question: "In which type of learning do employees participate in 'hypothetical real-world situations'?",
-    options: [
-      "Lecture method",
-      "Simulation",
-      "Self-paced reading",
-      "Vestibule training"
-    ],
-    answer: "Simulation"
-  },
-  {
-    question: "What is the primary benefit of using role plays in training?",
-    options: [
-      "Employees memorize more company policies",
-      "Employees improve problem-solving and interpersonal skills",
-      "Employees improve handwriting skills",
-      "Employees complete training faster"
-    ],
-    answer: "Employees improve problem-solving and interpersonal skills"
-  },
-  {
-    question: "What distinguishes simulation from other traditional training methods?",
-    options: [
-      "It is mainly used for leisure activities",
-      "It mimics real job conditions without the real-world risks",
-      "It uses only lectures to teach concepts",
-      "It limits decision-making practice"
-    ],
-    answer: "It mimics real job conditions without the real-world risks"
-  },
-  {
-    question: "Which of the following best defines evaluation in the context of training?",
-    options: [
-      "Assessing employee salaries after training",
-      "Assessing how effective the training program was in achieving its objectives",
-      "Deciding who should be promoted",
-      "Creating new organizational policies"
-    ],
-    answer: "Assessing how effective the training program was in achieving its objectives"
-  },
-  {
-    question: "Which model is the most commonly used for evaluating training effectiveness?",
-    options: [
-      "ADDIE Model",
-      "Kirkpatrick Model",
-      "Maslow's Hierarchy",
-      "Kolb's Learning Cycle"
-    ],
-    answer: "Kirkpatrick Model"
-  },
-  {
-    question: "What is measured at the first level (Reaction) of Kirkpatrick's Model?",
-    options: [
-      "Knowledge gain",
-      "Change in employee behavior",
-      "Participants' satisfaction with the training",
-      "Return on Investment (ROI)"
-    ],
-    answer: "Participants' satisfaction with the training"
-  },
-  {
-    question: "Which of the following is assessed at the second level (Learning) of Kirkpatrick's model?",
-    options: [
-      "Whether employees liked the trainer",
-      "The extent to which participants improved knowledge and skills",
-      "Impact on organizational revenue",
-      "Quality of post-training refreshments"
-    ],
-    answer: "The extent to which participants improved knowledge and skills"
-  },
-  {
-    question: "What is measured at the Behavior level (Level 3) of Kirkpatrick's Model?",
-    options: [
-      "Changes in job performance after training",
-      "Trainees' initial feedback",
-      "Written tests only",
-      "Training budget efficiency"
-    ],
-    answer: "Changes in job performance after training"
-  },
-  {
-    question: "Which of the following would be an indicator at the Results level of Kirkpatrick's Model?",
-    options: [
-      "Improved customer satisfaction scores",
-      "Completion of a training evaluation form",
-      "Passing a training quiz",
-      "Attending the entire training session"
-    ],
-    answer: "Improved customer satisfaction scores"
-  },
-  {
-    question: "Which evaluation method is based on calculating the economic return from training investment?",
-    options: [
-      "ROI Analysis",
-      "Reaction Survey",
-      "Post-training Assessment",
-      "Behavior Observation"
-    ],
-    answer: "ROI Analysis"
-  },
-  {
-    question: "Which of these is an example of formative evaluation?",
-    options: [
-      "Evaluation after the training ends",
-      "Evaluation during training to improve the ongoing program",
-      "Assessment six months after training",
-      "Budget evaluation of the training program"
-    ],
-    answer: "Evaluation during training to improve the ongoing program"
-  },
-  {
-    question: "Which type of evaluation occurs after the training is fully completed?",
-    options: [
-      "Formative Evaluation",
-      "Summative Evaluation",
-      "Behavior Evaluation",
-      "Organizational Analysis"
-    ],
-    answer: "Summative Evaluation"
-  },
-  {
-    question: "Which of the following is NOT a direct benefit of evaluating training programs?",
-    options: [
-      "Improving future training design",
-      "Demonstrating value to stakeholders",
-      "Eliminating all training costs",
-      "Identifying areas for improvement"
-    ],
-    answer: "Eliminating all training costs"
-  },
-  {
-    question: "Which of the following best defines 'career planning'?",
-    options: [
-      "Randomly changing jobs frequently",
-      "Process of setting career goals and creating a plan to achieve them",
-      "Focusing only on salary without personal growth",
-      "Depending entirely on employer for career decisions"
-    ],
-    answer: "Process of setting career goals and creating a plan to achieve them"
-  },
-  {
-    question: "Career development is primarily the responsibility of:",
-    options: [
-      "The employer only",
-      "The employee only",
-      "Both the employee and the organization",
-      "The government"
-    ],
-    answer: "Both the employee and the organization"
-  },
-  {
-    question: "Which of the following is NOT a step in the career planning process?",
-    options: [
-      "Self-assessment",
-      "Career exploration",
-      "Implementing random choices",
-      "Setting goals"
-    ],
-    answer: "Implementing random choices"
-  },
-  {
-    question: "Which term describes the pattern of work-related experiences throughout a person's life?",
-    options: [
-      "Job hopping",
-      "Career path",
-      "Salary progression",
-      "Career recession"
-    ],
-    answer: "Career path"
-  },
-  {
-    question: "Which of the following is an internal factor affecting career choice?",
-    options: [
-      "Parental expectations",
-      "Economic conditions",
-      "Self-concept",
-      "Labor market trends"
-    ],
-    answer: "Self-concept"
-  },
-  {
-    question: "Which type of mentoring relationship is usually planned and formalized by the organization?",
-    options: [
-      "Informal mentoring",
-      "Self-mentoring",
-      "Formal mentoring",
-      "Reverse mentoring"
-    ],
-    answer: "Formal mentoring"
-  },
-  {
-    question: "The psychological contract in careers refers to:",
-    options: [
-      "A formal written employment contract",
-      "Unspoken mutual expectations between employer and employee",
-      "Government-mandated career rules",
-      "Terms of retirement benefits"
-    ],
-    answer: "Unspoken mutual expectations between employer and employee"
-  },
-  {
-    question: "Which career development initiative involves employees working in multiple departments?",
-    options: [
-      "Job shadowing",
-      "Succession planning",
-      "Job rotation",
-      "Technical training"
-    ],
-    answer: "Job rotation"
-  },
-  {
-    question: "Which of the following is a disadvantage of poor career planning by an employee?",
-    options: [
-      "Better salary growth",
-      "Job satisfaction",
-      "Uncertainty and career stagnation",
-      "Early promotions"
-    ],
-    answer: "Uncertainty and career stagnation"
-  },
-  {
-    question: "Which of the following best describes succession planning?",
-    options: [
-      "Planning vacations for employees",
-      "Training employees in customer service",
-      "Identifying and developing internal candidates for key leadership positions",
-      "Reducing employee headcount"
-    ],
-    answer: "Identifying and developing internal candidates for key leadership positions"
-  },
-  {
-    question: "Which of the following best describes 'performance appraisal'?",
-    options: [
-      "A method to randomly reward employees",
-      "A process to systematically evaluate employee performance against set criteria",
-      "A meeting only about salary discussions",
-      "A casual conversation with no documentation"
-    ],
-    answer: "A process to systematically evaluate employee performance against set criteria"
-  },
-  {
-    question: "Which performance appraisal method uses a comparison between employees?",
-    options: [
-      "Rating scales method",
-      "Essay appraisal",
-      "Ranking method",
-      "Self-appraisal method"
-    ],
-    answer: "Ranking method"
-  },
-  {
-    question: "Which of the following is a major drawback of the traditional ranking method?",
-    options: [
-      "It promotes teamwork",
-      "It demotivates lower-ranked employees",
-      "It accurately identifies strengths",
-      "It is unbiased and objective"
-    ],
-    answer: "It demotivates lower-ranked employees"
-  },
-  {
-    question: "Which performance appraisal approach involves setting specific measurable goals?",
-    options: [
-      "Critical Incident Method",
-      "360-Degree Feedback",
-      "Management by Objectives (MBO)",
-      "Checklist Method"
-    ],
-    answer: "Management by Objectives (MBO)"
-  },
-  {
-    question: "In 360-degree feedback, who provides evaluation input?",
-    options: [
-      "Only the employee's manager",
-      "Only the HR department",
-      "Peers, subordinates, supervisors, and self",
-      "External auditors"
-    ],
-    answer: "Peers, subordinates, supervisors, and self"
-  },
-  {
-    question: "Which appraisal method records specific examples of employee effective and ineffective behaviors?",
-    options: [
-      "Critical Incident Method",
-      "Paired Comparison Method",
-      "Checklist Method",
-      "Essay Method"
-    ],
-    answer: "Critical Incident Method"
-  },
-  {
-    question: "Which of the following is a primary purpose of performance appraisal?",
-    options: [
-      "Only to terminate underperformers",
-      "To maintain employee discipline records",
-      "To improve employee performance and development",
-      "To distribute organizational bonuses randomly"
-    ],
-    answer: "To improve employee performance and development"
-  },
-  {
-    question: "Which factor may introduce bias in performance appraisals?",
-    options: [
-      "Using standardized evaluation forms",
-      "Objective goal setting",
-      "Halo effect",
-      "Management by Objectives (MBO)"
-    ],
-    answer: "Halo effect"
-  },
-  {
-    question: "Which of these is NOT typically evaluated during a performance appraisal?",
-    options: [
-      "Employee's job-related competencies",
-      "Employee's physical appearance",
-      "Employee's achievement of goals",
-      "Employee's work behavior"
-    ],
-    answer: "Employee's physical appearance"
-  },
-  {
-    question: "Which of the following is a key benefit of using performance appraisals?",
-    options: [
-      "Reduces organizational feedback channels",
-      "Helps in identifying training needs",
-      "Promotes favoritism among supervisors",
-      "Discourages communication between employees and managers"
-    ],
-    answer: "Helps in identifying training needs"
-  },
-  {
-    question: "Which of the following best defines 'organizational development' (OD)?",
-    options: [
-      "A quick restructuring of the company's financial plans",
-      "A planned, organization-wide effort to increase effectiveness and health through interventions in processes",
-      "Random changes implemented by top management",
-      "Annual financial reporting adjustments"
-    ],
-    answer: "A planned, organization-wide effort to increase effectiveness and health through interventions in processes"
-  },
-  {
-    question: "Which OD intervention focuses on improving interpersonal relationships through activities such as team building?",
-    options: [
-      "Technostructural interventions",
-      "Human process interventions",
-      "Strategic interventions",
-      "Financial interventions"
-    ],
-    answer: "Human process interventions"
-  },
-  {
-    question: "Which of the following is an example of a technostructural intervention?",
-    options: [
-      "Team building exercises",
-      "Job redesign",
-      "Conflict resolution workshops",
-      "Leadership training"
-    ],
-    answer: "Job redesign"
-  },
-  {
-    question: "The key role of a change agent in OD is to:",
-    options: [
-      "Resist organizational change",
-      "Facilitate and manage change within the organization",
-      "Focus only on financial audits",
-      "Terminate low-performing employees"
-    ],
-    answer: "Facilitate and manage change within the organization"
-  },
-  {
-    question: "Which of the following is a reason why organizational change often fails?",
-    options: [
-      "Strong leadership",
-      "Employee engagement",
-      "Resistance to change",
-      "Effective communication"
-    ],
-    answer: "Resistance to change"
-  },
-  {
-    question: "Which model describes the three stages of organizational change: Unfreezing, Changing, and Refreezing?",
-    options: [
-      "Lewin's Change Management Model",
-      "Maslow's Hierarchy of Needs",
-      "Vroom's Expectancy Theory",
-      "Kolb's Experiential Learning Model"
-    ],
-    answer: "Lewin's Change Management Model"
-  },
-  {
-    question: "In Lewin's model, the 'unfreezing' stage involves:",
-    options: [
-      "Implementing the change",
-      "Returning to old processes",
-      "Creating awareness for the need for change",
-      "Rewarding unchanged behavior"
-    ],
-    answer: "Creating awareness for the need for change"
-  },
-  {
-    question: "Which of the following interventions is designed to improve communication patterns within groups?",
-    options: [
-      "Survey feedback",
-      "Process consultation",
-      "Career planning",
-      "Technical skills training"
-    ],
-    answer: "Process consultation"
-  },
-  {
-    question: "What is the main goal of team building as an OD intervention?",
-    options: [
-      "To improve individual salaries",
-      "To strengthen interpersonal relationships and enhance team effectiveness",
-      "To reduce employee benefits",
-      "To create organizational silos"
-    ],
-    answer: "To strengthen interpersonal relationships and enhance team effectiveness"
-  },
-  {
-    question: "Which OD technique involves collecting data from employees about their perceptions and providing feedback for action planning?",
-    options: [
-      "Benchmarking",
-      "Survey feedback",
-      "Self-assessment",
-      "Budget review"
-    ],
-    answer: "Survey feedback"
-  },
+  
+    {
+      question: "How did Louis Allen define organization?",
+      options: [
+        "Organization is the process of identifying and grouping work to be performed, defining and delegating responsibility and authority and establishing relationships to enable people to work most effectively together in accomplishing objectives.",
+        "Organization is the process of combining the work that individuals or groups have to perform with the facilities necessary for its execution, that the duties so performed provide the best channels for efficient, systematic, positive and coordinated application of the available effort.",
+        "An organization is a collective group of people working without having a common purpose.",
+        "None of these"
+      ],
+      answer: "Organization is the process of identifying and grouping work to be performed, defining and delegating responsibility and authority and establishing relationships to enable people to work most effectively together in accomplishing objectives."
+    },
+    {
+      question: "There is a wide scope of employer-employee relationships, but which one is NOT an issue involved with that scope?",
+      options: [
+        "Collective bargaining",
+        "Customer service",
+        "Standing orders",
+        "Grievances and their redressal"
+      ],
+      answer: "Customer service"
+    },
+    {
+      question: "Consider the following statements and select the correctanswer 1. Training refers to teaching an employee new skills to help them improve their job performance and work more efficiently. 2. Training helps to enhance specific abilities or acquire new ones relevant to a job, task, or activity. 3. A proper training program is both Trainee and Trainer dependent 4. A proper training program is only trainee-dependent and does not depend on the Trainer.",
+      options: [
+        "1 and 4 are correct, 2 and 3 are false.",
+        "All 1, 2, 3, and 4 are correct.",
+        "1, 2 and 3 are correct, 4 is false.",
+        "None of these is correct"
+      ],
+      answer: "1, 2 and 3 are correct, 4 is false."
+    },
+    {
+      question: "Which one of the following is incorrect in connection to sec. 2(f) of the Indian Employee's Provident Fund act?",
+      options: [
+        "\"employee\" means any person who is employed for wages in any kind of work, manual or otherwise, in or in connection with the work of [an establishment], and who gets his wages directly or indirectly from the employer,",
+        "\"employee\" term covers any person employed by or through a contractor in or in connection with the work of the establishment;",
+        "The \"employee\" term covers any person engaged as an apprentice, not being an apprentice engaged under the Apprentices Act, 1961 (52 of 1961), or under the standing orders of the establishment;",
+        "None of these"
+      ],
+      answer: "None of these"
+    },
+    {
+      question: "Which type of training refers to familiarizing employees with the means of preventing, detecting, and eliminating non-quality items, usually in an organisation that produces a product?",
+      options: [
+        "Technical training",
+        "Soft skills training",
+        "Quality training",
+        "Skill training"
+      ],
+      answer: "Quality training"
+    },
+    {
+      question: "Find out the odd one of the following in terms of types of employment contract.",
+      options: [
+        "Ad-hoc employment contract",
+        "Permanent employment contract",
+        "Temporary employment contract",
+        "Independent contractor/consultant"
+      ],
+      answer: "Independent contractor/consultant"
+    },
+    {
+      question: "Which of the following best defines \"Human Capital\"?",
+      options: [
+        "The financial resources owned by an organization.",
+        "The physical assets, such as buildings and machinery, used by an organization.",
+        "The skills, knowledge, abilities, and health of employees that contribute to organizational success.",
+        "The legal framework that governs organizational operations."
+      ],
+      answer: "The skills, knowledge, abilities, and health of employees that contribute to organizational success."
+    },
+    {
+      question: "Which of the following is a primary goal of knowledge management in an organization?",
+      options: [
+        "To store large volumes of data in databases",
+        "To encourage employee retention",
+        "To create, share, and utilize knowledge effectively to achieve organizational goals",
+        "To replace traditional organizational structures"
+      ],
+      answer: "To create, share, and utilize knowledge effectively to achieve organizational goals"
+    },
+    {
+      question: "Which of the following best defines Intellectual Capital?",
+      options: [
+        "Financial assets held by a company",
+        "Tangible resources such as buildings and equipment",
+        "Knowledge, skills, and intellectual property contributing to a company's value",
+        "Current market value of a company's shares"
+      ],
+      answer: "Knowledge, skills, and intellectual property contributing to a company's value"
+    },
+    {
+      question: "Which of the following best describes \"Knowledge Capital\" as a type of human capital?",
+      options: [
+        "The skills and abilities of employees to form relationships.",
+        "The expertise, education, and training individuals possess.",
+        "The emotional resilience and well-being of individuals.",
+        "The loyalty and trust of customers."
+      ],
+      answer: "The expertise, education, and training individuals possess."
+    },
+    {
+      question: "Which of the following is/are correct statements about \"strategy\"?",
+      options: [
+        "Only 1 and 2",
+        "Only 4",
+        "Only 1 and 3",
+        "Only 2"
+      ],
+      answer: "Only 4"
+    },
+    {
+      question: "Identify the correct order of the steps of strategy implementation: 1. Developing an organization having potential of carrying out strategy successfully. 2. Disbursement of abundant resources to strategy-essential activities. 3. Creating strategy-encouraging policies 4. Employing best policies and programs for constant improvement. 5. Linking reward structure to accomplishment of results. 6. Making use of strategic leadership",
+      options: [
+        "2-1-3-5-4-6",
+        "1-4-2-3-5-6",
+        "3-2-4-1-5-6",
+        "1-2-3-4-5-6"
+      ],
+      answer: "1-2-3-4-5-6"
+    },
+    {
+      question: "The success of a competitive strategy is contingent on the demands of the __________ ________ and factors internal to the organization?",
+      options: [
+        "company mission",
+        "company goals",
+        "strategic choice",
+        "external environment"
+      ],
+      answer: "external environment"
+    },
+    {
+      question: "There are four business strategies and which of the following is NOT one of them?",
+      options: [
+        "Disinvestment",
+        "Internal growth",
+        "External growth",
+        "All the three as mentioned above are business strategies."
+      ],
+      answer: "All the three as mentioned above are business strategies."
+    },
+    {
+      question: "Metrics that show value of training involves ____________, performance improvement, reduced customer complaints, reduced turnover and greater employee satisfaction. Fill up the blank with suitable one of the following.",
+      options: [
+        "turnover",
+        "satisfaction",
+        "learning",
+        "training"
+      ],
+      answer: "learning"
+    },
+    {
+      question: "\"A perception that training is \"forced\" may lead to more time spent discussing than implementing training.\" Which model of organizing strategic training have the above constraints?",
+      options: [
+        "Corporate University Model",
+        "Customer Model",
+        "Matrix Model",
+        "None of these"
+      ],
+      answer: "Customer Model"
+    },
+    {
+      question: "\"It's more suitable for large companies with ample resources to invest in long-term training. There may be conflicts related to the curriculum of content areas.\" Which model of organizing strategic training have the above drawbacks?",
+      options: [
+        "Corporate University Model",
+        "Customer Model",
+        "Matrix Model",
+        "None of these"
+      ],
+      answer: "Corporate University Model"
+    },
+    {
+      question: "Which model involves having a training function for each division of function of the organization?",
+      options: [
+        "Corporate university model",
+        "Matrix model",
+        "Faculty model",
+        "Customer model"
+      ],
+      answer: "Matrix model"
+    },
+    {
+      question: "\"The organizational managers and employees may be anxious about change, feel like unable to cope up, value the current and do not understand the value of the new one.\" Which of the following change related problem depicts the above?",
+      options: [
+        "Resistance to change",
+        "Loss of control",
+        "Power imbalance",
+        "Task redefinition"
+      ],
+      answer: "Resistance to change"
+    },
+    {
+      question: "Fill in the blanks: A _____________ __________ is a business approach where an organization focuses its efforts on a single product line, market, or set of resources to achieve a competitive advantage. This strategy involves intensifying resources in a specific area rather than diversifying into new markets or products.",
+      options: [
+        "Internal growth strategy",
+        "External growth strategy",
+        "Disinvestment strategy",
+        "concentration strategy"
+      ],
+      answer: "concentration strategy"
+    },
+    {
+      question: "How can training needs be identified?",
+      options: [
+        "Current Capability + Desired Capability",
+        "Desired Capability - Current Capability",
+        "Current Performance + Future Needs",
+        "Training Budget - Performance Gap"
+      ],
+      answer: "Desired Capability - Current Capability"
+    },
+    {
+      question: "Which of the following factors is directly related to an employee's motivation to learn and performance?",
+      options: [
+        "Department size",
+        "Training budget allocation",
+        "Age and generation",
+        "Organizational hierarchy"
+      ],
+      answer: "Age and generation"
+    },
+    {
+      question: "Which step in the TNA process involves analyzing the collected data to draw conclusions and make recommendations for training?",
+      options: [
+        "5th step",
+        "4th step",
+        "3rd step",
+        "2nd step"
+      ],
+      answer: "4th step"
+    },
+    {
+      question: "What distinguishes the proactive approach from the reactive approach in TNA?",
+      options: [
+        "Proactive TNA addresses current performance gaps.",
+        "Reactive TNA considers only non-training solutions.",
+        "Proactive TNA focuses on anticipated future performance issues.",
+        "Reactive TNA is completed after implementing new technology."
+      ],
+      answer: "Proactive TNA focuses on anticipated future performance issues."
+    },
+    {
+      question: "Why are focus group discussions useful in training needs assessment?",
+      options: [
+        "They are quick to organize.",
+        "They explore complex issues and reduce training rejection by stakeholders.",
+        "They minimize bias in employee responses",
+        "They are ideal for analyzing quantitative data."
+      ],
+      answer: "They explore complex issues and reduce training rejection by stakeholders."
+    },
+    {
+      question: "What is the primary goal of competency assessments in the workplace?",
+      options: [
+        "To determine salary adjustments",
+        "To measure employee attendance",
+        "To evaluate employee job satisfaction",
+        "To identify and correct performance issues before they affect"
+      ],
+      answer: "To identify and correct performance issues before they affect"
+    },
+    {
+      question: "What is one disadvantage of using questionnaires for TNA?",
+      options: [
+        "They require too much time to complete",
+        "They do not allow for feedback from employees",
+        "The results may lack confidentiality",
+        "There is a high drop-out rate and potential for misinterpretation"
+      ],
+      answer: "There is a high drop-out rate and potential for misinterpretation"
+    },
+    {
+      question: "What is defined as 'the application of knowledge, skills and behaviours used in performing specific job tasks'?",
+      options: [
+        "Appraisal",
+        "Efficiency",
+        "Competency",
+        "None of the above"
+      ],
+      answer: "Competency"
+    },
+    {
+      question: "Which of the following is NOT a key level of Training Needs Assessment (TNA)?",
+      options: [
+        "Occupational Assessment",
+        "Individual assessment",
+        "Educational assessment",
+        "Organizational assessment"
+      ],
+      answer: "Educational assessment"
+    },
+    {
+      question: "According to the TNA model, what happens if the performance deficiency (PD) is due to something other than a KSA (Knowledge, Skills, Abilities) deficiency?",
+      options: [
+        "Training is the only solution to the problem",
+        "Non-training solutions should be considered",
+        "Performance issues are ignored",
+        "Only individual training is necessary"
+      ],
+      answer: "Non-training solutions should be considered"
+    },
+    {
+      question: "Which of the following is NOT an importance of learning mentioned in the lecture?",
+      options: [
+        "Promotes leadership qualities",
+        "Guarantees a higher salary",
+        "Develops self-confidence",
+        "Helps achieve personal goals"
+      ],
+      answer: "Guarantees a higher salary"
+    },
+    {
+      question: "Which theory of transfer is best suited for situations where the training environment is identical to the work environment?",
+      options: [
+        "Stimulus Generalization",
+        "Cognitive Theory",
+        "Identical Elements",
+        "Social Learning"
+      ],
+      answer: "Identical Elements"
+    },
+    {
+      question: "What aspect of training design helps anticipate potential issues and provides knowledge on handling problems?",
+      options: [
+        "Behavioral modeling",
+        "Error management",
+        "Realistic training environment",
+        "Transfer climate"
+      ],
+      answer: "Error management"
+    },
+    {
+      question: "What does the concept of \"transfer of training\" refer to?",
+      options: [
+        "The application of learned skills and knowledge to the job",
+        "The monetary cost of training initiatives",
+        "The entertainment value of training programs",
+        "The immediate evaluation of training programs"
+      ],
+      answer: "The application of learned skills and knowledge to the job"
+    },
+    {
+      question: "What type of learning is characterized by observing things like images and animations?",
+      options: [
+        "Visual",
+        "Imaginary",
+        "Auditory",
+        "Haptic"
+      ],
+      answer: "Visual"
+    },
+    {
+      question: "Which learning theory emphasizes that behavior is influenced by consequences such as rewards and punishments?",
+      options: [
+        "Social Learning Theory",
+        "Goal Setting Theory",
+        "Reinforcement Theory",
+        "Adult Learning Theory"
+      ],
+      answer: "Reinforcement Theory"
+    },
+    {
+      question: "What is Negative Transfer in the context of training?",
+      options: [
+        "Training has no impact on the workplace.",
+        "Training improves productivity but not performance.",
+        "Training results in better employee engagement only.",
+        "Training causes participants to perform worse than before."
+      ],
+      answer: "Training causes participants to perform worse than before."
+    },
+    {
+      question: "Which trainee characteristic reflects confidence in one's ability to apply learned competencies?",
+      options: [
+        "Cognitive ability",
+        "Motivation",
+        "Self-efficacy",
+        "Perceived utility of training"
+      ],
+      answer: "Self-efficacy"
+    },
+    {
+      question: "In Social Learning Theory, what is the step where individuals decide whether to imitate behavior based on its perceived rewards or costs?",
+      options: [
+        "Attention",
+        "Retention",
+        "Motivational Process",
+        "Motor Reproduction"
+      ],
+      answer: "Motivational Process"
+    },
+    {
+      question: "The Stimulus Generalization approach focuses on which type of transfer?",
+      options: [
+        "Near transfer",
+        "Identical transfer",
+        "Applied transfer",
+        "Far transfer"
+      ],
+      answer: "Far transfer"
+    },
+    {
+      question: "What type of training focuses on introducing new employees to the company's values and policies?",
+      options: [
+        "Onboarding training",
+        "Orientation training",
+        "Technical-skills training",
+        "Compliance training"
+      ],
+      answer: "Orientation training"
+    },
+    {
+      question: "What is the 'Li' in Procter & Gamble's 'Li-La-La' training model?",
+      options: [
+        "Learning environment",
+        "Learning instruction",
+        "Learning intent",
+        "Learning integration"
+      ],
+      answer: "Learning intent"
+    },
+    {
+      question: "Which of the following is a type of training programme?",
+      options: [
+        "Budget training",
+        "Franchise training",
+        "Virtual training",
+        "Casual training"
+      ],
+      answer: "Virtual training"
+    },
+    {
+      question: "Which phase focuses on ensuring the work environment supports learning and transfer of training?",
+      options: [
+        "Pre-training",
+        "Learning event",
+        "Evaluation phase",
+        "Post-training"
+      ],
+      answer: "Post-training"
+    },
+    {
+      question: "Electrical outlets should be available every ________ feet to support technology use during training.",
+      options: [
+        "Two",
+        "Four",
+        "Six",
+        "Eight"
+      ],
+      answer: "Six"
+    },
+    {
+      question: "The \"T\" in S.M.A.R.T. stands for ________, meaning the objective should be achievable by the end of the training session.",
+      options: [
+        "time-framed",
+        "targeted",
+        "timely",
+        "teachable"
+      ],
+      answer: "time-framed"
+    },
+    {
+      question: "Which of the following is/are included in a design document?",
+      options: [
+        "Only 1, 3, 4",
+        "Only 1 and 2",
+        "Only 2",
+        "All of these"
+      ],
+      answer: "All of these"
+    },
+    {
+      question: "How can design documentation support the training process?",
+      options: [
+        "By limiting content to basic details",
+        "By ensuring clear communication between trainers and managers",
+        "By replacing training programs with written documents",
+        "By reducing the need for evaluation"
+      ],
+      answer: "By ensuring clear communication between trainers and managers"
+    },
+    {
+      question: "Hands-on training sessions are best suited for ________ learners.",
+      options: [
+        "Visual",
+        "Kinaesthetic",
+        "Auditory",
+        "Passive"
+      ],
+      answer: "Kinaesthetic"
+    },
+    {
+      question: "Which of the following is NOT typically part of a curriculum roadmap?",
+      options: [
+        "Learning objectives",
+        "Prerequisite skills",
+        "Delivery method",
+        "Instructor Qualifications"
+      ],
+      answer: "Instructor Qualifications"
+    },
+    {
+      question: "Which type of evaluation measures the immediate effects of a training program?",
+      options: [
+        "Formative evaluation",
+        "Process evaluation",
+        "Impact evaluation",
+        "Outcome evaluation"
+      ],
+      answer: "Formative evaluation"
+    },
+    {
+      question: "Which level of evaluation assesses the knowledge gained by the learner?",
+      options: [
+        "Reaction",
+        "Learning",
+        "Behavior",
+        "Results"
+      ],
+      answer: "Learning"
+    },
+    {
+      question: "What is the primary purpose of evaluation in training?",
+      options: [
+        "To criticize employee performance",
+        "To establish and maintain standards",
+        "To maximize profits",
+        "To manage employee attendance"
+      ],
+      answer: "To establish and maintain standards"
+    },
+    {
+      question: "Which term refers to the extent to which training outcomes measure inappropriate capabilities?",
+      options: [
+        "Relevance",
+        "Criteria Deficiency",
+        "Criteria Contamination",
+        "Reliability"
+      ],
+      answer: "Criteria Contamination"
+    },
+    {
+      question: "Which tool provides qualitative feedback about training effectiveness?",
+      options: [
+        "Multiple-choice tests",
+        "Surveys with Likert scales",
+        "Focus groups",
+        "Completion rates"
+      ],
+      answer: "Focus groups"
+    },
+    {
+      question: "__________ refers to breaking down material learned into component parts to facilitate understanding of inter-relationships.",
+      options: [
+        "Knowledge",
+        "Comprehension",
+        "Synthesis",
+        "Analysis"
+      ],
+      answer: "Analysis"
+    },
+    {
+      question: "What is the main goal of formative evaluation?",
+      options: [
+        "Assess long-term impact",
+        "Determine ROI",
+        "Generate post-training reports",
+        "Refine the training program"
+      ],
+      answer: "Refine the training program"
+    },
+    {
+      question: "Return on investment is an important training -----------------. It is calculated through a cost benefit analysis which is the process of determining economic benefits of a training programme using accounting methods based on the training costs and benefits. Fill up the blank.",
+      options: [
+        "evaluation",
+        "transfer",
+        "input",
+        "outcome"
+      ],
+      answer: "evaluation"
+    },
+    {
+      question: "Which type of interview is entirely free-flowing?",
+      options: [
+        "Structured",
+        "Semi-structured",
+        "Unstructured",
+        "Guided"
+      ],
+      answer: "Unstructured"
+    },
+    {
+      question: "The Solomon four-group design combines:",
+      options: [
+        "Pre/post-tests with a control group design",
+        "Post-tests with observation",
+        "Pre-training questionnaires and interviews",
+        "Training sessions and unstructured feedback"
+      ],
+      answer: "Pre/post-tests with a control group design"
+    },
+    {
+      question: "Traditional training programs often focus on a specific set of ________ skills, limiting opportunities for trainees to ask questions or challenge norms.",
+      options: [
+        "Managerial",
+        "Interpersonal",
+        "Tactical",
+        "Theoretical"
+      ],
+      answer: "Theoretical"
+    },
+    {
+      question: "A challenge of group building methods is that certain team members may not be willing or able to work as hard as others, which can hurt ________?",
+      options: [
+        "Morale",
+        "Creativity",
+        "Coordination",
+        "Productivity"
+      ],
+      answer: "Productivity"
+    },
+    {
+      question: "Which type of training is typically conducted within the workplace and addresses specific job requirements?",
+      options: [
+        "Blended training",
+        "In-house training",
+        "Soft skills training",
+        "Remedial training"
+      ],
+      answer: "In-house training"
+    },
+    {
+      question: "The three components of team performance are knowledge, ________, and behavioral requirements.",
+      options: [
+        "Attitude",
+        "Communication",
+        "Motivation",
+        "Leadership"
+      ],
+      answer: "Attitude"
+    },
+    {
+      question: "What is one key challenge associated with traditional training methods?",
+      options: [
+        "Lack of real-world application",
+        "High level of interactivity",
+        "Over-reliance on technology",
+        "Cost-effectiveness"
+      ],
+      answer: "Lack of real-world application"
+    },
+    {
+      question: "Which is an example of simulation training?",
+      options: [
+        "Conducting mock presentations",
+        "Learning through apprenticeships",
+        "Flight simulation for pilots",
+        "Learning through apprenticeships"
+      ],
+      answer: "Flight simulation for pilots"
+    },
+    {
+      question: "Which of the following is NOT an audio-visual technique?",
+      options: [
+        "DVDs and films",
+        "Role-playing",
+        "PowerPoints",
+        "Videotapes"
+      ],
+      answer: "Role-playing"
+    },
+    {
+      question: "Which hands-on training method involves trainees taking the initiative to learn independently?",
+      options: [
+        "On-the-job",
+        "Apprenticeship",
+        "Self-directed",
+        "Simulations method"
+      ],
+      answer: "Self-directed"
+    },
+    {
+      question: "What is one of the primary advantages of using the lecture method in training?",
+      options: [
+        "High level of interaction between trainer and trainees",
+        "Allows trainees to practice skills in real time",
+        "Enables trainers to convey large amounts of information quickly",
+        "Provides hands-on experience for trainees"
+      ],
+      answer: "Enables trainers to convey large amounts of information quickly"
+    },
+    {
+      question: "Which type of learning enhances job-related competencies through interaction with others?",
+      options: [
+        "Guided competency development",
+        "Guided contextual learning",
+        "Social competency development",
+        "Social contextual learning"
+      ],
+      answer: "Social contextual learning"
+    },
+    {
+      question: "Which of the following is NOT an environmental factor influencing technology-based training?",
+      options: [
+        "Globalization",
+        "Economic Pressure",
+        "Employee Resistance",
+        "Technological Advancement"
+      ],
+      answer: "Employee Resistance"
+    },
+    {
+      question: "What is a major benefit of technology-based training compared to traditional classroom training?",
+      options: [
+        "Higher travel costs",
+        "Reduced accessibility",
+        "Just-in-time access to training",
+        "Limited scalability"
+      ],
+      answer: "Just-in-time access to training"
+    },
+    {
+      question: "Which of the following technologies allows real-time interaction between trainers and trainees in different locations?",
+      options: [
+        "Webcasts/Webinars",
+        "CD-ROM-based training",
+        "Asynchronous e-learning",
+        "Printed training manuals"
+      ],
+      answer: "Webcasts/Webinars"
+    },
+    {
+      question: "One of the key objectives of technology-based training is:",
+      options: [
+        "To eliminate the need for trainers",
+        "To explain the influence of new technologies on training",
+        "To replace all classroom training",
+        "To reduce the overall workforce"
+      ],
+      answer: "To explain the influence of new technologies on training"
+    },
+    {
+      question: "Which of the following is an advantage of e-learning over traditional training?",
+      options: [
+        "Higher costs",
+        "Limited learner control",
+        "Increased flexibility in training",
+        "Less engagement"
+      ],
+      answer: "Increased flexibility in training"
+    },
+    {
+      question: "What is a key feature of technology-based training?",
+      options: [
+        "Fixed schedule for all learners",
+        "Trainee control over learning pace",
+        "Lack of multimedia integration",
+        "One-time access only"
+      ],
+      answer: "Trainee control over learning pace"
+    },
+    {
+      question: "Which of the following is NOT a component of a Learning Management System (LMS)?",
+      options: [
+        "Enrollment management",
+        "Performance tracking",
+        "Inventory management",
+        "Online course delivery"
+      ],
+      answer: "Inventory management"
+    },
+    {
+      question: "Which of the following is a limitation of computer-based training?",
+      options: [
+        "Requires extensive capital investment",
+        "Completely replaces face-to-face training",
+        "Has no tracking features",
+        "Cannot provide interactive elements"
+      ],
+      answer: "Requires extensive capital investment"
+    },
+    {
+      question: "What is an example of blended learning?",
+      options: [
+        "Only classroom-based training",
+        "Only online-based training",
+        "A combination of online and face-to-face training",
+        "Self-paced reading without interaction"
+      ],
+      answer: "A combination of online and face-to-face training"
+    },
+    {
+      question: "Which of the following is a major factor in deciding to use social media for training?",
+      options: [
+        "High employee turnover",
+        "Need for collaboration and knowledge sharing",
+        "Preference for printed manuals",
+        "Reducing workplace interactions"
+      ],
+      answer: "Need for collaboration and knowledge sharing"
+    },
+    {
+      question: "Which of the following is NOT an importance of employee development?",
+      options: [
+        "Attracting top talent",
+        "Reducing the need for training",
+        "Improving employee performance",
+        "Promoting job satisfaction"
+      ],
+      answer: "Reducing the need for training"
+    },
+    {
+      question: "What is the primary goal of employee development?",
+      options: [
+        "To ensure employees work longer hours",
+        "To upgrade skills and knowledge to support organizational goals",
+        "To make employees independent of the organization",
+        "To reduce communication within teams"
+      ],
+      answer: "To upgrade skills and knowledge to support organizational goals"
+    },
+    {
+      question: "Which of the following is an example of short-term employee development?",
+      options: [
+        "Implementing remote work policies",
+        "Sending employees for an international MBA",
+        "Assigning long-term leadership roles",
+        "Creating a new organizational culture"
+      ],
+      answer: "Implementing remote work policies"
+    },
+    {
+      question: "Which of these is NOT a type of employee development program?",
+      options: [
+        "Mentorship programs",
+        "360-degree feedback",
+        "Employee demotion programs",
+        "Workshops and working groups"
+      ],
+      answer: "Employee demotion programs"
+    },
+    {
+      question: "What is the main purpose of a 360-degree feedback system?",
+      options: [
+        "To provide feedback from multiple sources",
+        "To reduce employee responsibilities",
+        "To increase employee workload",
+        "To eliminate performance reviews"
+      ],
+      answer: "To provide feedback from multiple sources"
+    },
+    {
+      question: "Which of the following describes job enlargement?",
+      options: [
+        "Increasing responsibilities in an employee's current job",
+        "Moving an employee to a lower position",
+        "Providing fewer tasks to employees",
+        "Reducing an employee's work responsibilities"
+      ],
+      answer: "Increasing responsibilities in an employee's current job"
+    },
+    {
+      question: "Which of these is an example of a stretch assignment?",
+      options: [
+        "Assigning tasks that employees are already skilled in",
+        "Placing employees in challenging roles beyond their current expertise",
+        "Giving fewer responsibilities to employees",
+        "Assigning only routine tasks"
+      ],
+      answer: "Placing employees in challenging roles beyond their current expertise"
+    },
+    {
+      question: "Which of the following is an example of an interpersonal relationship in the workplace?",
+      options: [
+        "A formal organizational policy",
+        "A project team working together",
+        "An employee working in isolation",
+        "A robotic process automation system"
+      ],
+      answer: "A project team working together"
+    },
+    {
+      question: "Which factor does NOT contribute to building a strong interpersonal relationship?",
+      options: [
+        "Trust",
+        "Rapport",
+        "Poor communication",
+        "Mutual respect"
+      ],
+      answer: "Poor communication"
+    },
+    
+    
+      {
+        question: "Which type of employee development focuses on building leadership within an organization?",
+        options: [
+          "Succession planning",
+          "Mentorship programs",
+          "On-the-job training",
+          "Self-guided reading"
+        ],
+        answer: "Succession planning"
+      },
+      {
+        question: "Which of the following is NOT a category of Corporate Social Responsibility (CSR)?",
+        options: [
+          "Legal Responsibility",
+          "Environmental Responsibility",
+          "Philanthropic Responsibility",
+          "Economic Responsibility"
+        ],
+        answer: "Economic Responsibility"
+      },
+      {
+        question: "What does \"job hopping\" refer to?",
+        options: [
+          "Regular promotion within the same company",
+          "Employees frequently changing jobs for growth or compensation",
+          "Skipping jobs on resumes",
+          "Avoiding challenging roles"
+        ],
+        answer: "Employees frequently changing jobs for growth or compensation"
+      },
+      {
+        question: "What is the primary role of the CSR Committee in a company?",
+        options: [
+          "Marketing the company's products",
+          "Formulating CSR policies and monitoring their implementation",
+          "Hiring employees",
+          "Reducing the company's financial expenditures"
+        ],
+        answer: "Formulating CSR policies and monitoring their implementation"
+      },
+      {
+        question: "What is the \"Platinum Rule\" in managing diversity?",
+        options: [
+          "Treat others as you want to be treated",
+          "Treat others equally",
+          "Treat others with respect",
+          "Treat others as they want to be treated"
+        ],
+        answer: "Treat others as they want to be treated"
+      },
+      {
+        question: "Which of the following is a key characteristic of effective diversity programs?",
+        options: [
+          "Employees are left to adapt on their own",
+          "Demographic quotas are imposed",
+          "Diversity goals are evaluated using metrics",
+          "Managers are blamed for diversity issues"
+        ],
+        answer: "Diversity goals are evaluated using metrics"
+      },
+      {
+        question: "According to the Bureau of Labour Statistics, the labor force growth rates of those __________ are projected to outpace all other age groups over the 2014-24 decade.",
+        options: [
+          "50 and older",
+          "55 and older",
+          "60 and older",
+          "65 and older"
+        ],
+        answer: "55 and older"
+      },
+      {
+        question: "Which stage of career development involves employees updating their skills and maintaining their value to the company?",
+        options: [
+          "Exploration",
+          "Establishment",
+          "Maintenance",
+          "Decline"
+        ],
+        answer: "Maintenance"
+      },
+      {
+        question: "What are the two key documents that provide a legal framework for CSR in India?",
+        options: [
+          "Section 135 of Companies Act 2013 and Companies (CSR Policy) Rules 2014",
+          "Section 135 of Income Tax Act 1961 and SEBI Guidelines",
+          "Companies Act 2002 and CSR Guidelines 2015",
+          "CSR Compliance Rules and Section 137 of Companies Act"
+        ],
+        answer: "Section 135 of Companies Act 2013 and Companies (CSR Policy) Rules 2014"
+      },
+      {
+        question: "Which entity is responsible for ensuring that a company's CSR policy is implemented?",
+        options: [
+          "The CSR Committee",
+          "The HR Department",
+          "The Board of the Company",
+          "The Ministry of Corporate Affairs"
+        ],
+        answer: "The Board of the Company"
+      },
+      {
+        question: "Why are older workers preferred in training roles?",
+        options: [
+          "Lack of other trainers",
+          "Expertise and ability to mentor the next generation",
+          "Disinterest in other job roles",
+          "Inability to learn new skills"
+        ],
+        answer: "Expertise and ability to mentor the next generation"
+      },
+      {
+        question: "How does training contribute to sustainability?",
+        options: [
+          "By reducing employee wages",
+          "By eliminating unnecessary training programs",
+          "By teaching employees to protect the environment",
+          "By avoiding technological advancements"
+        ],
+        answer: "By teaching employees to protect the environment"
+      },
+      {
+        question: "What is a key feature of mobile learning in training?",
+        options: [
+          "It is expensive and difficult to implement",
+          "It allows flexible, on-the-go learning",
+          "It eliminates the need for trainers",
+          "It only benefits technical employees"
+        ],
+        answer: "It allows flexible, on-the-go learning"
+      },
+      {
+        question: "What is the purpose of gamification in training?",
+        options: [
+          "To make training longer and more complex",
+          "To enhance engagement and motivation",
+          "To replace traditional learning methods entirely",
+          "To eliminate assessments in training"
+        ],
+        answer: "To enhance engagement and motivation"
+      },
+      {
+        question: "What is a major benefit of e-learning platforms?",
+        options: [
+          "They limit the number of training programs",
+          "They provide learning opportunities anytime, anywhere",
+          "They require physical attendance for training",
+          "They increase training costs significantly"
+        ],
+        answer: "They provide learning opportunities anytime, anywhere"
+      },
+      {
+        question: "What is a key advantage of just-in-time learning?",
+        options: [
+          "Learning happens exactly when needed",
+          "It removes the need for performance support",
+          "It focuses only on theoretical concepts",
+          "It requires extensive classroom sessions"
+        ],
+        answer: "Learning happens exactly when needed"
+      },
+      {
+        question: "What is a major benefit of Learning Record Stores (LRS)?",
+        options: [
+          "They eliminate the need for online training",
+          "They help store and analyze learning data",
+          "They increase training costs significantly",
+          "They only work with traditional classroom training"
+        ],
+        answer: "They help store and analyze learning data"
+      },
+      {
+        question: "What is a key role of a business partner in training?",
+        options: [
+          "Conducting classroom training only",
+          "Using business knowledge to improve employee performance",
+          "Replacing HR departments",
+          "Limiting training programs"
+        ],
+        answer: "Using business knowledge to improve employee performance"
+      },
+      {
+        question: "What is the primary goal of upskilling and reskilling?",
+        options: [
+          "To replace existing employees",
+          "To enhance employee skills for evolving job roles",
+          "To reduce workforce size",
+          "To increase employee workload"
+        ],
+        answer: "To enhance employee skills for evolving job roles"
+      },
+      {
+        question: "What is a primary benefit of outsourcing training?",
+        options: [
+          "Reducing training costs and gaining expert knowledge",
+          "Increasing employee workload",
+          "Eliminating training needs",
+          "Limiting learning opportunities"
+        ],
+        answer: "Reducing training costs and gaining expert knowledge"
+      },
+      {
+        question: "What is an positive impact of virtual mentoring?",
+        options: [
+          "Decreased employee engagement",
+          "Increased accessibility to expert guidance",
+          "Reduced need for training",
+          "Elimination of soft skills training"
+        ],
+        answer: "Increased accessibility to expert guidance"
+      },
+      {
+        question: "What is business disruption?",
+        options: [
+          "The process of completely stopping business operations",
+          "The introduction of an unexpected product or service that displaces an existing one",
+          "The natural evolution of business without external influence",
+          "A temporary market decline due to external shocks"
+        ],
+        answer: "The introduction of an unexpected product or service that displaces an existing one"
+      },
+      {
+        question: "What is the first stage of disruption?",
+        options: [
+          "Complete reimagination",
+          "Disruption of incumbent",
+          "Rapid linear evolution",
+          "Appealing convergence"
+        ],
+        answer: "Rapid linear evolution"
+      },
+      {
+        question: "What is a key characteristic of disruptive innovation?",
+        options: [
+          "Immediate success",
+          "Gradual decline in market acceptance",
+          "Initially lower performance but rapid improvement",
+          "Dependence on high initial investment"
+        ],
+        answer: "Initially lower performance but rapid improvement"
+      },
+      {
+        question: "What is an example of a disruptive technology?",
+        options: [
+          "Landline telephones",
+          "Printed newspapers",
+          "Ride-sharing apps",
+          "Traditional film cameras"
+        ],
+        answer: "Ride-sharing apps"
+      },
+      {
+        question: "What is the role of digital disruption in training?",
+        options: [
+          "It eliminates the need for employee training",
+          "It makes learning more accessible and personalized",
+          "It reduces the importance of skill development",
+          "It focuses only on traditional classroom training"
+        ],
+        answer: "It makes learning more accessible and personalized"
+      },
+      {
+        question: "How does disruptive technology affect businesses?",
+        options: [
+          "It always leads to business failure",
+          "It forces businesses to adapt or risk obsolescence",
+          "It has minimal impact on traditional businesses",
+          "It only affects small companies"
+        ],
+        answer: "It forces businesses to adapt or risk obsolescence"
+      },
+      {
+        question: "What is an example of digital disruption in education?",
+        options: [
+          "Traditional textbook-based learning",
+          "Online learning platforms like Coursera",
+          "In-person-only corporate training",
+          "Handwritten assignments"
+        ],
+        answer: "Online learning platforms like Coursera"
+      },
+      {
+        question: "What role does artificial intelligence (AI) play in disruption?",
+        options: [
+          "AI helps businesses automate and personalize services",
+          "AI slows down digital transformation",
+          "AI replaces all human workers",
+          "AI has no impact on businesses"
+        ],
+        answer: "AI helps businesses automate and personalize services"
+      },
+      {
+        question: "What is a major challenge of digital disruption?",
+        options: [
+          "Reduced technological innovation",
+          "Resistance to change within organizations",
+          "Increased reliance on outdated systems",
+          "Declining digital literacy"
+        ],
+        answer: "Resistance to change within organizations"
+      },
+      {
+        question: "What is the impact of cloud computing on training?",
+        options: [
+          "It limits training accessibility",
+          "It enables scalable and on-demand learning solutions",
+          "It only benefits large corporations",
+          "It reduces employee engagement"
+        ],
+        answer: "It enables scalable and on-demand learning solutions"
+      },
+      {
+        question: "Which type of employee development focuses on building leadership within an organization?",
+        options: [
+          "Succession planning",
+          "Mentorship programs",
+          "On-the-job training",
+          "Self-guided reading"
+        ],
+        answer: "Succession planning"
 
-  {
-    question: "Which of the following best defines 'learning organization'?",
-    options: [
-      "An organization focused only on training programs",
-      "An organization that continually enhances its capabilities to create and innovate",
-      "An organization that ignores employee input",
-      "An organization strictly following traditional rules without change"
-    ],
-    answer: "An organization that continually enhances its capabilities to create and innovate"
-  },
-  {
-    question: "Which of the following is NOT one of Peter Senge's five disciplines for a learning organization?",
-    options: [
-      "Personal mastery",
-      "Shared vision",
-      "Rigid hierarchy",
-      "Team learning"
-    ],
-    answer: "Rigid hierarchy"
-  },
-  {
-    question: "In a learning organization, systems thinking is essential because it:",
-    options: [
-      "Focuses on isolated parts of the organization",
-      "Encourages linear problem solving",
-      "Helps understand the organization as a complex interrelated system",
-      "Discourages feedback mechanisms"
-    ],
-    answer: "Helps understand the organization as a complex interrelated system"
-  },
-  {
-    question: "Which discipline emphasizes clarifying and deepening personal vision?",
-    options: [
-      "Shared vision",
-      "Mental models",
-      "Personal mastery",
-      "Team learning"
-    ],
-    answer: "Personal mastery"
-  },
-  {
-    question: "Which of the following is an example of organizational learning?",
-    options: [
-      "Hiring new employees",
-      "Conducting exit interviews",
-      "Adapting business strategies based on past failures",
-      "Firing underperformers immediately"
-    ],
-    answer: "Adapting business strategies based on past failures"
-  },
-  {
-    question: "Which of the following statements is TRUE about knowledge management?",
-    options: [
-      "Knowledge management discourages information sharing",
-      "Knowledge management involves capturing, distributing, and effectively using knowledge",
-      "Knowledge management focuses solely on archiving old documents",
-      "Knowledge management is only applicable in universities"
-    ],
-    answer: "Knowledge management involves capturing, distributing, and effectively using knowledge"
-  },
-  {
-    question: "Which process ensures that tacit knowledge (personal know-how) is converted into explicit knowledge (documented know-how)?",
-    options: [
-      "Knowledge hoarding",
-      "Knowledge codification",
-      "Knowledge hiding",
-      "Knowledge ignoring"
-    ],
-    answer: "Knowledge codification"
-  },
-  {
-    question: "A community of practice (CoP) primarily helps in:",
-    options: [
-      "Regulating salaries across industries",
-      "Sharing and creating new knowledge among practitioners",
-      "Designing formal organizational structures",
-      "Auditing financial records"
-    ],
-    answer: "Sharing and creating new knowledge among practitioners"
-  },
-  {
-    question: "Which of the following is NOT a characteristic of a learning organization?",
-    options: [
-      "Encouragement of continuous improvement",
-      "Punishing mistakes harshly",
-      "Promoting knowledge sharing",
-      "Building shared visions"
-    ],
-    answer: "Punishing mistakes harshly"
-  },
-  {
-    question: "Knowledge management tools are primarily used to:",
-    options: [
-      "Monitor employee behavior",
-      "Store, share, and analyze organizational knowledge",
-      "Track vacation leaves",
-      "Create employee attendance reports"
-    ],
-    answer: "Store, share, and analyze organizational knowledge"
-  }
-
-
-
-
-
+        }
+    
 
   
 ];
