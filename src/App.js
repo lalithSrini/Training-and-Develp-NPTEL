@@ -704,7 +704,7 @@ const rawQuestions = [
         "Social competency development",
         "Social contextual learning"
       ],
-      answer: "Social contextual learning"
+      answer: "Social competency learning"
     },
     {
       question: "Which of the following is NOT an environmental factor influencing technology-based training?",
