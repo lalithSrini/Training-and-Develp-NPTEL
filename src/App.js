@@ -164,7 +164,7 @@ const rawQuestions = [
         "Matrix Model",
         "None of these"
       ],
-      answer: "Customer Model"
+      answer: "Matrix Model"
     },
     {
       question: "\"It's more suitable for large companies with ample resources to invest in long-term training. There may be conflicts related to the curriculum of content areas.\" Which model of organizing strategic training have the above drawbacks?",
@@ -184,7 +184,7 @@ const rawQuestions = [
         "Faculty model",
         "Customer model"
       ],
-      answer: "Matrix model"
+      answer: "Customer model"
     },
     {
       question: "\"The organizational managers and employees may be anxious about change, feel like unable to cope up, value the current and do not understand the value of the new one.\" Which of the following change related problem depicts the above?",
@@ -966,7 +966,7 @@ const rawQuestions = [
           "60 and older",
           "65 and older"
         ],
-        answer: "55 and older"
+        answer: "65 and older"
       },
       {
         question: "Which stage of career development involves employees updating their skills and maintaining their value to the company?",
